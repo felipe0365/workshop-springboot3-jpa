@@ -1,9 +1,6 @@
 package com.compassuol.course.config;
 
-import com.compassuol.course.entities.Category;
-import com.compassuol.course.entities.Order;
-import com.compassuol.course.entities.Product;
-import com.compassuol.course.entities.User;
+import com.compassuol.course.entities.*;
 import com.compassuol.course.entities.enums.OrderItem;
 import com.compassuol.course.entities.enums.OrderStatus;
 import com.compassuol.course.repositories.*;
@@ -76,6 +73,9 @@ public class TestConfig implements CommandLineRunner {
 
         orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 
+        Payment pay1 = new Payment(Instant.parse("2019-06-20T21:53:07Z"), o1);
+        o1.setPayment(pay1);
 
+        orderRepository.save(o1);
     }
 }
